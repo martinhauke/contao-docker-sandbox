@@ -22,10 +22,9 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/local/include/
 
 # install the PHP extensions we need
-RUN export CFLAGS="-I/usr/src/php" 
 RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr
-RUN docker-php-ext-install pdo pdo_mysql gd mysqli gmp bcmath zip xmlwriter xmlreader iconv bz2 mbstring soap intl
-RUN pecl install mcrypt-1.0.1
+RUN CFLAGS="-I/usr/src/php" docker-php-ext-install pdo pdo_mysql gd mysqli gmp bcmath zip xmlwriter xmlreader iconv bz2 mbstring soap intl
+RUN pecl install mcrypt-1.0.1 \
     && docker-php-ext-enable mcrypt
 
 RUN a2enmod rewrite expires
