@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/51dcb0e8b6c0449990085db92acfa196)](https://www.codacy.com/app/soxrepo/contao-docker-sandbox?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=soxrepo/contao-docker-sandbox&amp;utm_campaign=Badge_Grade)
+
 # Contao docker sandbox
 
 This is me testing out docker to create sandbox copies of existing systems for development purposes. I am completely new to Docker, so it is advised not to trust anything I am doing here. First and foremost this is a learning project.
