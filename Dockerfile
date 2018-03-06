@@ -2,23 +2,23 @@ FROM php:7-apache
 
 LABEL version="0.1.0" \
       description="Docker Image for a contao installation" \
-      maintainer="Martin Hauke <hauke@september-werbeagentur.de"
+      maintainer="hauke@september-werbeagentur.de"
 
 
 # install the libraries we need
-RUN apt-get update
-RUN apt-get install -y libicu-dev
-RUN apt-get install -y libjpeg-dev
-RUN apt-get install -y libpng-dev
-RUN apt-get install -y libgmp-dev
-RUN apt-get install -y libmcrypt-dev
-RUN apt-get install -y libxml2-dev
-RUN apt-get install -y mysql-common
-RUN apt-get install -y libbz2-dev
-RUN apt-get install -y zlib1g-dev
-RUN apt-get install -y vim
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libbz2-dev \
+    libgmp-dev \
+    libicu-dev \
+    libjpeg-dev \
+    libmcrypt-dev \
+    libpng-dev \
+    libxml2-dev \
+    mysql-common \
+    vim \
+    zlib1g-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 RUN ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/local/include/
 
 # install the PHP extensions we need
