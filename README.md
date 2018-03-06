@@ -7,7 +7,7 @@ This is me testing out docker to create sandbox copies of existing systems for d
 The following goals should be acheived by the end (This is an early list and might change as I learn things):
 
 * [ ] create a php container
-* [ ] create a sql container
+* [ ] create an sql container
 * [ ] install desired contao version
 * [ ] copy project files (clone from github project?)
 * [ ] use sqldump to copy the database
