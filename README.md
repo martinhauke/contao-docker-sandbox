@@ -8,12 +8,27 @@ This is me testing out docker to create sandbox copies of existing systems for d
 
 The following goals should be acheived by the end (This is an early list and might change as I learn things):
 
-* [ ] create a php container
-* [ ] create an sql container
-* [ ] install desired contao version
+* [X] create a php container
+* [X] create an nginx container
+* [X] create an sql container
+* [X] install desired contao version
 * [ ] copy project files (clone from github project?)
 * [ ] use sqldump to copy the database
 * [ ] configure contao
+
+## Installation
+
+Make sure you have *docker*, *docker-compose* and *git* installed.
+
+1. Clone the repository: `git clone https://github.com/soxrepo/contao-docker-sandbox`
+2. `cd` into the directory
+3. Build and start the containers with `docker-compose up -d`
+4. Navigate to `localhost:8080/contao/install.php` in your browser
+5. Follow the instructions
+
+The database configuration can be looked up in `docker-compose.yml`. Enter
+`mysql` in the host field.
+
 
 ## Tools
 
