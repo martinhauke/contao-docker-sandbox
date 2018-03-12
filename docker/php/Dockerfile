@@ -27,18 +27,18 @@ RUN CFLAGS="-I/usr/src/php" docker-php-ext-install pdo pdo_mysql gd mysqli gmp b
 RUN pecl install mcrypt-1.0.1 \
     && docker-php-ext-enable mcrypt
 
-ENV VERSION 3.5.30
+ENV VERSION 3.2.8
 
 RUN curl -o contao.tar.gz -fSL "https://download.contao.org/${VERSION}/tar"
 
 RUN tar -xzf contao.tar.gz -C /var/www/html
 RUN rm contao.tar.gz
 RUN chown -R www-data:www-data /var/www/html
-RUN mv /var/www/html/contao-${VERSION}/* /var/www/html/
-RUN mv /var/www/html/contao-${VERSION}/.e* /var/www/html/
-RUN mv /var/www/html/contao-${VERSION}/.g* /var/www/html/
-RUN mv /var/www/html/contao-${VERSION}/.h* /var/www/html/
-RUN rmdir /var/www/html/contao-${VERSION}/
+RUN mv /var/www/html/core-${VERSION}/* /var/www/html/
+#RUN mv /var/www/html/core-${VERSION}/.e* /var/www/html/
+RUN mv /var/www/html/core-${VERSION}/.g* /var/www/html/
+RUN mv /var/www/html/core-${VERSION}/.h* /var/www/html/
+RUN rmdir /var/www/html/core-${VERSION}/
 RUN cp -p /var/www/html/.htaccess.default .htaccess
 
 VOLUME /var/www/html
