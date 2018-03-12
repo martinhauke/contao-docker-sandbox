@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:7-fpm
 
 LABEL version="0.1.0" \
       description="Docker Image for a contao installation" \
@@ -27,8 +27,6 @@ RUN CFLAGS="-I/usr/src/php" docker-php-ext-install pdo pdo_mysql gd mysqli gmp b
 RUN pecl install mcrypt-1.0.1 \
     && docker-php-ext-enable mcrypt
 
-RUN a2enmod rewrite expires
-
 ENV VERSION 3.5.30
 
 RUN curl -o contao.tar.gz -fSL "https://download.contao.org/${VERSION}/tar"
@@ -41,9 +39,6 @@ RUN mv /var/www/html/contao-${VERSION}/.e* /var/www/html/
 RUN mv /var/www/html/contao-${VERSION}/.g* /var/www/html/
 RUN mv /var/www/html/contao-${VERSION}/.h* /var/www/html/
 RUN rmdir /var/www/html/contao-${VERSION}/
-RUN cp -p /var/www/html/.htaccess.default .htacce
+RUN cp -p /var/www/html/.htaccess.default .htaccess
 
 VOLUME /var/www/html
-
-
-CMD ["apache2-foreground"]
